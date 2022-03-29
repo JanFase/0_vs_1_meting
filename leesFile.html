@@ -22,6 +22,8 @@
     cols = header.split(";");
     document.getElementById("log").append(cols.length);
     var table = document.getElementById("table_csv_1");
+ 
+     var s = ''
 
     for (let i = 0 ; i < cols.length ; i++) {
       document.getElementById("log").append("\n\r");
@@ -29,22 +31,15 @@
       var row = table.insertRow(i + 1);
       var cell = row.insertCell(0);
       cell.innerHTML = cols[i];
+      s = '0_' +  cols[i];
+      //alert(s);
+      cell.id = s;
     }
     
-    
-    //for line in document.getElementById('output').textContent {
-    //  alert line
-    //}
-    
-    // add row and cell 1st position of the table:
-    //var row1 = table.insertRow(0);
-    //var cell1 = row1.insertCell(0);
-    //cell1.innerHTML = "NEW CELL1";
-    
-    // add row and cell 2nd position of the table:
-    //var row2 = table.insertRow(0);
-    //var cell2 = row.insertCell(1);
-    //cell2.innerHTML = "NEW CELL2";
+    alert(document.getElementById("log").innerHTML);
+    //alert("s=", s);
+    alert(document.getElementById("0_sleutel").innerHTML);
+    alert(document.getElementById("0_postcode").innerHTML);
 
   }
   
@@ -78,9 +73,11 @@
       <th>csv-0</th>
     </table>
     
-    <input type="button" value="Doe iets..." onclick="Javascript:doeIets()">
     
-    <div id="log">En hier de log jawel...</div>
+    <div id="log">En hier de log...</div>
+
+    <input type="button" value="Doe iets..." onclick="Javascript:doeIets()">
+
     
 </body>
   
