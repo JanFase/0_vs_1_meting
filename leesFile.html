@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title>csv files vergelijken</title>
+
+    <style>
+      body {font-family: verdana; font-size: 12px}
+      th {font-family: verdana; font-size: 10px}
+      td {font-family: verdana; font-size: 10px}
+      h1   {color: blue;}
+      p    {color: red;}
+      </style>
+
+<script type="text/javascript">
+  function doeIets() {
+    //alert(document.getElementById('output').textContent)
+    
+    header = document.getElementById('output').textContent.split('\n')[0];
+    //alert(header);
+    
+    cols = header.split(";");
+    document.getElementById("log").append(cols.length);
+    var table = document.getElementById("table_csv_1");
+
+    for (let i = 0 ; i < cols.length ; i++) {
+      document.getElementById("log").append("\n\r");
+      document.getElementById("log").append(cols[i]);
+      var row = table.insertRow(i + 1);
+      var cell = row.insertCell(0);
+      cell.innerHTML = cols[i];
+    }
+    
+    
+    //for line in document.getElementById('output').textContent {
+    //  alert line
+    //}
+    
+    // add row and cell 1st position of the table:
+    //var row1 = table.insertRow(0);
+    //var cell1 = row1.insertCell(0);
+    //cell1.innerHTML = "NEW CELL1";
+    
+    // add row and cell 2nd position of the table:
+    //var row2 = table.insertRow(0);
+    //var cell2 = row.insertCell(1);
+    //cell2.innerHTML = "NEW CELL2";
+
+  }
+  
+</script>
+
+</head>
+  
+<body>
+    <input type="file" name="csv_1" id="csv_1" value="file_01.csv">
+    <br>
+   
+    <pre id="output"></pre>
+      
+    <script type="text/javascript">
+        document.getElementById('csv_1')
+            .addEventListener('change', function() {
+              
+            var fr=new FileReader();
+            fr.onload=function(){
+                document.getElementById('output')
+                        .textContent=fr.result;
+            }
+              
+            fr.readAsText(this.files[0]);
+        })
+    </script>
+
+    <br>
+    <br>
+    <table id="table_csv_1" border="1">
+      <th>csv-0</th>
+    </table>
+    
+    <input type="button" value="Doe iets..." onclick="Javascript:doeIets()">
+    
+    <div id="log">En hier de log...</div>
+    
+</body>
+  
+</html>
